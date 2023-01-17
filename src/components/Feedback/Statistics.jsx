@@ -1,26 +1,27 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { StatisticsList } from './Feedback.styled';
+import Section from 'components/Section';
 
-const Statistics = ({good = 0, neutral = 0, bad = 0, total = 0, positivePercentage = 0, classObj}) => {
-    const {goodCls, neutralCls, badCls} = classObj;
+const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
     return(
-        <ul>
-            <li>Good: <span className={goodCls}>{good}</span></li>
-            <li>Neutral: <span className={neutralCls}>{neutral}</span></li>
-            <li>Bad: <span className={badCls}>{bad}</span></li>
-            <li>Total: {total}</li>
-            <li>Positive feedback: {positivePercentage}%</li>
-        </ul>
-    );
-}
+        <Section title="Statistics">
+            <StatisticsList>
+                <li>Good: <span>{good}</span></li>
+                <li>Neutral: <span>{neutral}</span></li>
+                <li>Bad: <span>{bad}</span></li>
+                {total !== 0 && (<li>Total: <span>{total}</span></li>)}
+                {positivePercentage !== 0 && (<li>Positive: <span>{positivePercentage}%</span></li>)}
+            </StatisticsList>
+        </Section>
+    )
+};
 
 Statistics.propTypes = {
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
     total: PropTypes.number,
     positivePercentage: PropTypes.number,
-    classArr: PropTypes.object,
 };
 
 export default Statistics;

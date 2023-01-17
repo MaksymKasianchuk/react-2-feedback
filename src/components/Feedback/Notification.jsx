@@ -1,15 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-// import styles from './Feedback.module.scss';
+import { NotificationStyled } from './Feedback.styled';
 
 const Notification = ({message}) => {
     return(
-        <div>
+        <NotificationStyled>
             <p>{message}</p>
-        </div>
-    );
-}
+        </NotificationStyled>
+    )
+};
+
 Notification.propTypes = {
-    message: PropTypes.string.isRequired
-}
+    message: PropTypes.number.isRequired,
+};
+
 export default Notification;
